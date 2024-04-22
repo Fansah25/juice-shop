@@ -8,6 +8,7 @@ import {
 } from '../helpers/helpers'
 import { type ChallengeInstruction } from '../' //scoreboard
 
+
 export const ScoreBoardInstruction: ChallengeInstruction = {
   name: 'Score Board',
   hints: [
