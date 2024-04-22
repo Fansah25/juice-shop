@@ -17,6 +17,8 @@ const challenges = require('../data/datacache').challenges
 const users = require('../data/datacache').users
 
 // vuln-code-snippet start loginAdminChallenge loginBenderChallenge loginJimChallenge
+// commenting the correction - Faith
+//import { BasketModel } from "../../../models/basket"; - faith
 module.exports = function login () {
   function afterLogin (user: { data: User, bid: number }, res: Response, next: NextFunction) {
     verifyPostLoginChallenges(user) // vuln-code-snippet hide-line
@@ -34,8 +36,10 @@ module.exports = function login () {
   return (req: Request, res: Response, next: NextFunction) => {
     verifyPreLoginChallenges(req) // vuln-code-snippet hide-line
     models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${security.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: UserModel, plain: true }) // vuln-code-snippet vuln-line loginAdminChallenge loginBenderChallenge loginJimChallenge
-      .then((authenticatedUser: { data: User }) => { // vuln-code-snippet neutral-line loginAdminChallenge loginBenderChallenge loginJimChallenge
-        const user = utils.queryResultToJson(authenticatedUser)
+      //models.sequelize.query(`SELECT * FROM Users WHERE email = $1 AND password = $2 AND deletedAt IS NULL` - faith
+    .then((authenticatedUser: { data: User }) => { // vuln-code-snippet neutral-line loginAdminChallenge loginBenderChallenge loginJimChallenge
+      //{ bind: [req.body.email, req.body.password], model: models.User, plain: true }) - faith
+      const user = utils.queryResultToJson(authenticatedUser)
         if (user.data?.id && user.data.totpSecret !== '') {
           res.status(401).json({
             status: 'totp_token_required',
