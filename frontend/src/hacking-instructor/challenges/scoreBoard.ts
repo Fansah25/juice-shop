@@ -6,7 +6,7 @@
 import {
   waitInMs, waitForAngularRouteToBeVisited, waitForDevTools
 } from '../helpers/helpers'
-import { type ChallengeInstruction } from '../'
+import { type ChallengeInstruction } from '../' //scoreboard
 
 export const ScoreBoardInstruction: ChallengeInstruction = {
   name: 'Score Board',
