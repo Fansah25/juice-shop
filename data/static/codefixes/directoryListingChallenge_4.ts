@@ -1,7 +1,9 @@
 /* /ftp directory browsing and file download */
-  app.use('/ftp', serveIndexMiddleware, serveIndex('ftp', { icons: false }))
-  app.use('/ftp(?!/quarantine)/:file', fileServer())
-  app.use('/ftp/quarantine/:file', quarantineServer())
+  // app.use('/ftp', serveIndexMiddleware, serveIndex('ftp', { icons: false }))
+  // app.use('/ftp(?!/quarantine)/:file', fileServer())
+  // app.use('/ftp/quarantine/:file', quarantineServer())
+
+// correction was to delete the above messgae for the fix it challenge
 
   /* /encryptionkeys directory browsing */
   app.use('/encryptionkeys', serveIndexMiddleware, serveIndex('encryptionkeys', { icons: true, view: 'details' }))
