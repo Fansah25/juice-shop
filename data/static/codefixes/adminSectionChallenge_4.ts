@@ -1,6 +1,6 @@
 const routes: Routes = [
   {
-    path: 'administration',
+    path: atob('YWRtaW5pc3RyYXRpb24='), // fix it code for this challenge
     component: AdministrationComponent,
     canActivate: [LoginGuard]
   },
