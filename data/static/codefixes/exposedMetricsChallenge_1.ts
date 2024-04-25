@@ -1,7 +1,7 @@
 /* Serve metrics */
 let metricsUpdateLoop: any
 const Metrics = metrics.observeMetrics()
-app.get('/metrics', security.denyAll(), metrics.serveMetrics())
+app.get('/metrics', security.denyAll(), metrics.serveMetrics()) // correct code for teh fix challenge
 errorhandler.title = `${config.get('application.name')} (Express ${utils.version('express')})`
 
 const registerWebsocketEvents = require('./lib/startup/registerWebsocketEvents')
